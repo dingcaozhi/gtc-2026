@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>混动摩托车 - 最新动态与新闻</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+        }
+        
+        .news-header {
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .news-source {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #667eea;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .news-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+        
+        .news-body {
+            padding: 20px;
+        }
+        
+        .news-summary {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 0.8rem;
+            color: #999;
+        }
+        
+        .read-more {
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .highlight-section {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .highlight-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .highlight-content {
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .highlight-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .highlight-content li {
+            margin: 8px 0;
+        }
+        
+        .brand-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 5px;
+        }
+        
+        .kawasaki { background: #00a651; color: white; }
+        .yamaha { background: #003399; color: white; }
+        .honda { background: #cc0000; color: white; }
+        .bmw { background: #0066b1; color: white; }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏍️ 混动摩托车</h1>
+            <p>最新动态与行业新闻 - 2026年3月</p>
+        </header>
+        
+        <div class="highlight-section">
+            <h2>📊 行业概览</h2>
+            <div class="highlight-content">
+                <p>2026年摩托车行业全面迈向混动化，日系三大厂商（川崎、本田、雅马哈）纷纷布局混合动力技术：</p>
+                <ul>
+                    <li><strong>川崎</strong>：Ninja 7 Hybrid 开创并联混动先河，具备数公里纯电续航能力</li>
+                    <li><strong>雅马哈</strong>：SPHEV 技术布局轻混至中轻混市场，兼容串联与并联模式</li>
+                    <li><strong>本田</strong>：加速中大排量混动化研发，推动城市与休闲骑行车型电动化</li>
+                </ul>
+                <p style="margin-top: 15px;">混动技术旨在兼顾燃油动力与低速电驱的环保与高效率，预计在未来两三年内成为主流技术方案。</p>
+            </div>
+        </div>
+        
+        <div class="news-grid">
+            <a href="https://m.58moto.com/news/11325824" target="_blank" class="news-card">
+                <div class="news-header">
+                    <span class="news-source">摩托范</span>
+                    <h3 class="news-title">从汽车杀到两轮战场！本田已拥有适合摩托车的完美混合动力系统</h3>
+                </div>
+                <div class="news-body">
+                    <p class="news-summary">全球头部摩托车制造商已纷纷布局电动化，川崎推出两款混动与两款电动摩托车；本田展示多款接近量产的电动概念车及踏板车产品线；雅马哈也在踏板车基础上，积极探索电动与混动技术。</p>
+                    <div class="news-meta">
+                        <span>2025-05-30</span>
+                        <span class="read-more">阅读全文 →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="https://news.qq.com/rain/a/20251217A05SMC00" target="_blank" class="news-card">
+                <div class="news-header">
+                    <span class="news-source">腾讯新闻</span>
+                    <h3 class="news-title">川崎新的混动专利要搞一个大踏板？</h3>
+                </div>
+                <div class="news-body">
+                    <p class="news-summary">川崎在忍者7混合动力摩托车上不断开发实施新的技术，探索可以开发的更多车型。混动车型对于摩托车这种体积有限的交通工具来说是个不小的挑战，因为不光有内燃机系统，还有电池及电机系统。</p>
+                    <div class="news-meta">
+                        <span>2025-12-17</span>
+                        <span class="read-more">阅读全文 →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="https://youjia.baidu.com/view/articleDetail/9543397806780472608" target="_blank" class="news-card">
+                <div class="news-header">
+                    <span class="news-source">有驾</span>
+                    <h3 class="news-title">本田突然亮出"屠龙刀"，日系摩托的"内燃机黄昏"还是"绝地反击"？</h3>
+                </div>
+                <div class="news-body">
+                    <p class="news-summary">汽车上的i-MMD混动系统名声在外，摩托车上为什么不能有？是不是可以搞个低转用电、高转用油的"性能混动跑车"？或者搞个增程式的"长途穿越ADV"，彻底解决续航焦虑？</p>
+                    <div class="news-meta">
+                        <span>2025年</span>
+                        <span class="read-more">阅读全文 →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="https://cj.sina.cn/articles/view/1134062635/43986c2b00101cg9c" target="_blank" class="news-card">
+                <div class="news-header">
+                    <span class="news-source">新浪财经</span>
+                    <h3 class="news-title">雅马哈在摩托车混动技术方面有新突破</h3>
+                </div>
+                <div class="news-body">
+                    <p class="news-summary">早在第一波电动化计划中，雅马哈就曾推出针对中型踏板所设计的串联并联混合（SPHEV）技术。这次针对大排量摩托车推出的PHEV技术，则是进一步解决纯电动车面临的核心难题。</p>
+                    <div class="news-meta">
+                        <span>2025-04-22</span>
+                        <span class="read-more">阅读全文 →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="https://plus.webike.hk/zh-cn/2025/03/06/yamaha%E3%80%8Csphev%E3%80%8D%E6%B7%B7%E5%90%88%E5%8B%95%E5%8A%9B%E8%BB%8A%E6%AC%BE%E6%9B%9D%E5%85%89%EF%BC%81triple-boost-%E6%8A%80%E8%A1%93%E6%9A%97%E7%A4%BA-mt-09-y-amt-hybrid-%E4%BE%86%E8%A5%B2/" target="_blank" class="news-card">
+                <div class="news-header">
+                    <span class="news-source">Webike</span>
+                    <h3 class="news-title">Yamaha"SPHEV"混合动力车款曝光！Triple Boost技术暗示</h3>
+                </div>
+                <div class="news-body">
+                    <p class="news-summary">Yamaha Motor在官方网站上发布了一支名为"电动技术的新挑战"的影片，介绍了一款搭载新技术"SPHEV系统"的全新车款，暗示MT-09 Y-AMT Hybrid即将来袭。</p>
+                    <div class="news-meta">
+                        <span>2025-03-06</span>
+                        <span class="read-more">阅读全文 →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="https://www.sohu.com/a/808315411_120152242" target="_blank" class="news-card">
+                <div class="news-header">
+                    <span class="news-source">搜狐网</span>
+                    <h3 class="news-title">比亚迪首款电动摩托车曝光，造四轮的都要开始卷两轮了吗？</h3>
+                </div>
+                <div class="news-body">
+                    <p class="news-summary">网络上出现了一张关于比亚迪摩托车的相关专利图。在这张专利图中，除了能看到这辆摩托车的一些外观设计信息以外，还有很重要的一点便是：这是辆电动摩托车。至于是纯电动还是油电混动目前还不得而知。</p>
+                    <div class="news-meta">
+                        <span>2024-09-12</span>
+                        <span class="read-more">阅读全文 →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="https://www.mtcxx.com/newsdetailapp/15226" target="_blank" class="news-card">
+                <div class="news-header">
+                    <span class="news-source">摩信网</span>
+                    <h3 class="news-title">美国军用混合动力摩托，有望明年推出</h3>
+                </div>
+                <div class="news-body">
+                    <p class="news-summary">Logos Technologies计划为SilentHawk配置上一对混合动力电动发动机。由于是混合动力摩托车，其不光可以使用电力驱动也可以使用燃料，而且不挑燃料，可使用标准汽油、柴油，甚至是航空燃料。</p>
+                    <div class="news-meta">
+                        <span>近期</span>
+                        <span class="read-more">阅读全文 →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="https://www.shenxuanche.com/news/600114" target="_blank" class="news-card">
+                <div class="news-header">
+                    <span class="news-source">神选车</span>
+                    <h3 class="news-title">本田调整电动化策略，油电混动车成主力</h3>
+                </div>
+                <div class="news-body">
+                    <p class="news-summary">本田社长三部敏弘公布2025业务策略调整，在市场需求放缓下，将电动化策略着重在油电车。本田下修2030年电动车销售占比30%的目标，转而注重油电车，目标在2030年达成全球销量360万台以上。</p>
+                    <div class="news-meta">
+                        <span>2025-05-21</span>
+                        <span class="read-more">阅读全文 →</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <div class="highlight-section">
+            <h2>🔧 技术特点与趋势</h2>
+            <div class="highlight-content">
+                <ul>
+                    <li><strong>混动架构多样化：</strong>摩托车混动主要分为并联（如川崎，强调动力的辅助提升）与串并联（如雅马哈，追求能耗优化）两种路线</li>
+                    <li><strong>性能提升：</strong>混动系统在保持内燃机高转速动力的同时，补充了低速转矩，并且在噪音和能耗方面有显著改善</li>
+                    <li><strong>核心挑战：</strong>电动机与动力电池增加了整车重量与制造成本，使得紧凑型结构设计和轻量化材料的应用成为当前研发的瓶颈</li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer>
+            <p>数据来源：NewsData.io、GNews、Google Search</p>
+            <p style="margin-top: 10px;">最后更新：2026年3月9日</p>
+        </footer>
+    </div>
+</body>
+</html>
