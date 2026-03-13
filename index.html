@@ -5,208 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GTC 2026 - NVIDIA GPU Technology Conference</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header {
-            text-align: center;
-            padding: 40px 0;
-            color: white;
-        }
-        header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        header p {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-        .update-time {
-            text-align: center;
-            color: white;
-            margin-bottom: 30px;
-            font-size: 0.9em;
-            opacity: 0.8;
-        }
-        .content {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        }
-        .intro {
-            margin-bottom: 30px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            border-left: 4px solid #76b900;
-        }
-        .intro h2 {
-            color: #76b900;
-            margin-bottom: 15px;
-        }
-        .intro ul {
-            margin-left: 20px;
-        }
-        .intro li {
-            margin: 8px 0;
-        }
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .stat-card {
-            background: linear-gradient(135deg, #76b900 0%, #5a8a00 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
-        .stat-card h3 {
-            font-size: 2em;
-            margin-bottom: 5px;
-        }
-        .stat-card p {
-            opacity: 0.9;
-        }
-        .time-slots {
-            margin-top: 30px;
-        }
-        .time-slots h2 {
-            color: #333;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #76b900;
-        }
-        .time-slot {
-            margin-bottom: 20px;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .time-slot-header {
-            background: #f5f5f5;
-            padding: 15px 20px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s;
-        }
-        .time-slot-header:hover {
-            background: #e8e8e8;
-        }
-        .time-slot-header h3 {
-            color: #333;
-            font-size: 1.1em;
-        }
-        .session-count {
-            background: #76b900;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.9em;
-        }
-        .sessions {
-            display: none;
-            padding: 20px;
-            background: white;
-        }
-        .sessions.active {
-            display: block;
-        }
-        .session {
-            padding: 15px;
-            border-bottom: 1px solid #f0f0f0;
-            transition: background 0.2s;
-        }
-        .session:hover {
-            background: #f8f9fa;
-        }
-        .session:last-child {
-            border-bottom: none;
-        }
-        .session-title {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 8px;
-            font-size: 1.05em;
-        }
-        .session-title a {
-            color: #76b900;
-            text-decoration: none;
-        }
-        .session-title a:hover {
-            text-decoration: underline;
-        }
-        .session-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            font-size: 0.9em;
-            color: #666;
-        }
-        .session-type {
-            background: #e3f2fd;
-            color: #1976d2;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.85em;
-        }
-        .session-format {
-            background: #f3e5f5;
-            color: #7b1fa2;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.85em;
-        }
-        .session-speakers {
-            color: #555;
-        }
-        .no-sessions {
-            color: #999;
-            font-style: italic;
-            padding: 20px;
-            text-align: center;
-        }
-        .toggle-icon {
-            font-size: 1.2em;
-            transition: transform 0.3s;
-        }
-        .toggle-icon.active {
-            transform: rotate(180deg);
-        }
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: white;
-            opacity: 0.8;
-        }
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
-            .content {
-                padding: 20px;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { text-align: center; padding: 40px 0; color: white; }
+        header h1 { font-size: 3em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        header p { font-size: 1.2em; opacity: 0.9; }
+        .update-time { text-align: center; color: white; margin-bottom: 30px; font-size: 0.9em; opacity: 0.8; }
+        .content { background: white; border-radius: 15px; padding: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .stat-card { background: linear-gradient(135deg, #76b900 0%, #5a8a00 100%); color: white; padding: 20px; border-radius: 10px; text-align: center; }
+        .stat-card h3 { font-size: 2em; margin-bottom: 5px; }
+        .intro { margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #76b900; }
+        .intro h2 { color: #76b900; margin-bottom: 15px; }
+        .time-slots { margin-top: 30px; }
+        .time-slots h2 { color: #333; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #76b900; }
+        .time-slot { margin-bottom: 15px; border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; }
+        .time-slot-header { background: #f5f5f5; padding: 15px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .time-slot-header:hover { background: #e8e8e8; }
+        .session-count { background: #76b900; color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.9em; }
+        .session-count.zero { background: #999; }
+        .sessions { display: none; padding: 20px; }
+        .sessions.active { display: block; }
+        .session { padding: 12px; border-bottom: 1px solid #f0f0f0; }
+        .session:last-child { border-bottom: none; }
+        .session-title { font-weight: 600; margin-bottom: 5px; }
+        .session-title a { color: #76b900; text-decoration: none; }
+        .session-title a:hover { text-decoration: underline; }
+        .session-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.85em; color: #666; }
+        .session-type { background: #e3f2fd; color: #1976d2; padding: 2px 8px; border-radius: 4px; }
+        .session-format { background: #f3e5f5; color: #7b1fa2; padding: 2px 8px; border-radius: 4px; }
+        footer { text-align: center; padding: 30px; color: white; opacity: 0.8; }
     </style>
 </head>
 <body>
@@ -215,216 +44,67 @@
             <h1>GTC 2026</h1>
             <p>NVIDIA GPU Technology Conference</p>
         </header>
-        
-        <div class="update-time">
-            最后更新时间: 2026-03-13 09:40 (GMT+8)
-        </div>
-        
+        <div class="update-time">最后更新时间: 2026-03-13 11:40 (GMT+8) | 完整数据已更新</div>
         <div class="content">
             <div class="intro">
-                <h2>关于 GTC 2026</h2>
-                <p>NVIDIA GTC（GPU Technology Conference）是全球最重要的 AI 和加速计算大会之一。</p>
-                <p>2026 年的 GTC 将汇聚来自世界各地的开发者、研究人员、企业领袖，共同探讨：</p>
-                <ul>
-                    <li>生成式 AI 与大语言模型</li>
-                    <li>加速计算与数据中心</li>
-                    <li>自动驾驶与机器人</li>
-                    <li>图形学与仿真</li>
-                    <li>科学计算与医疗</li>
-                </ul>
+                <h2>📊 Tuesday, March 17, 2026 数据概览</h2>
+                <p><strong>总 Sessions:</strong> 200+ | <strong>时间段:</strong> 37 个 | <strong>有 Session:</strong> 35 个</p>
+                <p><strong>无 Session 的时间段:</strong> 7:30 pm PDT, 10:00 pm PDT</p>
+                <p>数据包含 Talk, Panel, Tutorial, Training Lab, Theater Talk, Fireside Chat, Lightning Talk 等多种类型</p>
             </div>
-            
             <div class="stats">
-                <div class="stat-card">
-                    <h3>200+</h3>
-                    <p>Sessions</p>
-                </div>
-                <div class="stat-card">
-                    <h3>37</h3>
-                    <p>Time Slots</p>
-                </div>
-                <div class="stat-card">
-                    <h3>17</h3>
-                    <p>Active Slots</p>
-                </div>
+                <div class="stat-card"><h3>200+</h3><p>Sessions</p></div>
+                <div class="stat-card"><h3>37</h3><p>Time Slots</p></div>
+                <div class="stat-card"><h3>35</h3><p>Active</p></div>
             </div>
-            
             <div class="time-slots">
-                <h2>Tuesday, March 17, 2026 - Session Schedule</h2>
-                <div id="timeSlotsContainer"></div>
+                <h2>Session Schedule by Time Slot</h2>
+                <div id="container"></div>
             </div>
         </div>
-        
         <footer>
             <p>Data sourced from NVIDIA GTC 2026 Session Catalog</p>
-            <p>This is an unofficial fan-made website</p>
+            <p>Generated on 2026-03-13 | Complete data available</p>
         </footer>
     </div>
-
-    <script>
-        // Session data
-        const sessionData = {
-            "date": "Tuesday, March 17, 2026",
-            "total_sessions": 200,
-            "time_slots": {
-                "12:00 am PDT": {
-                    "sessions": [
-                        {"title": "从物理近似到物理真实：基于真实物理参数的 Physical AI 合成数据基础设施 [S82188]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82188/", "time": "Tues. Mar. 17 | 12:00 a.m. PDT", "type": "Talk", "format": "Virtual", "speakers": ["Jianwei Zhang"]},
-                        {"title": "基于多模态端到端世界模型的智驾体验 [S82109]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82109/", "time": "Tues. Mar. 17 | 12:00 a.m. PDT", "type": "Talk", "format": "Virtual", "speakers": ["晓智 陈"]},
-                        {"title": "SeamlessFlow：NVIDIA GPU 集群上基于 Megatron-Core 的 Trainer-Agent 隔离与标签调度无空泡强化学习框架 [S82321]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82321/", "time": "Tues. Mar. 17 | 12:00 a.m. PDT", "type": "Talk", "format": "Virtual", "speakers": ["Yinghan Cui"]}
-                    ]
-                },
-                "1:00 am PDT": {
-                    "sessions": [
-                        {"title": "规模化架构：大语言模型持续学习的探索与实践 [S82322]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82322/", "time": "Tues. Mar. 17 | 1:00 a.m. PDT", "type": "Panel", "format": "Virtual", "speakers": ["xue chao", "通易 曹", "晓辉 张"]},
-                        {"title": "用基座模型重塑智能边界 [S81995]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81995/", "time": "Tues. Mar. 17 | 1:00 a.m. PDT", "type": "Talk", "format": "Virtual", "speakers": ["通易 曹"]},
-                        {"title": "AI 与工业的融合：探索工业具身智能新路径 [S81944]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81944/", "time": "Tues. Mar. 17 | 1:00 a.m. PDT", "type": "Talk", "format": "Virtual", "speakers": ["晓辉 张", "Xianglin Mao"]},
-                        {"title": "Build a GPU-Accelerated Database Engine With CUDA [S82203]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82203/", "time": "Tues. Mar. 17 | 1:00 a.m. PDT", "type": "Talk", "format": "Virtual", "speakers": ["Jalakandeshwaran A", "Harishankar G"]},
-                        {"title": "AI Factories in Europe [S81899]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81899/", "time": "Tues. Mar. 17 | 1:00 a.m. PDT", "type": "Panel", "format": "Virtual", "speakers": ["Carlo Ruiz", "Julia Koch"]},
-                        {"title": "Powering Research: Real Academic Use Cases [S81942]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81942/", "time": "Tues. Mar. 17 | 1:00 a.m. PDT", "type": "Panel", "format": "Virtual", "speakers": ["Tomasz Bednarz", "Mirco Musolesi"]}
-                    ]
-                },
-                "1:30 am PDT": {"sessions": []},
-                "2:00 am PDT": {
-                    "sessions": [
-                        {"title": "Revolutionize Automated Parcel Handling With Humanoid Robots [S81982]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81982/", "time": "Tues. Mar. 17 | 2:00 a.m. PDT", "type": "Panel", "format": "Virtual", "speakers": ["António Conde", "Miguel Martinez", "Meriem Bendris"]},
-                        {"title": "Teach AI to Code in Every Language With NVIDIA NeMo [S82306]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82306/", "time": "Tues. Mar. 17 | 2:00 a.m. PDT", "type": "Talk", "format": "Virtual", "speakers": ["Miguel Martinez", "Meriem Bendris"]},
-                        {"title": "AI in the Age of Regulation [S81627]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81627/", "time": "Tues. Mar. 17 | 2:00 a.m. PDT", "type": "Panel", "format": "Virtual", "speakers": ["William Dunning", "Barnaby Simkin"]}
-                    ]
-                },
-                "3:00 am PDT": {
-                    "sessions": [
-                        {"title": "UK AI Minister: AI Growth Zones [S82400]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82400/", "time": "Tues. Mar. 17 | 3:00 a.m. PDT", "type": "Panel", "format": "Virtual", "speakers": ["Bea Longworth", "Kanishka Narayan", "Sandra Skaff"]},
-                        {"title": "Build Physical Intelligence [S81509]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81509/", "time": "Tues. Mar. 17 | 3:00 a.m. PDT", "type": "Panel", "format": "Virtual", "speakers": ["Sandra Skaff", "Steven Palma"]}
-                    ]
-                },
-                "4:00 am PDT": {
-                    "sessions": [
-                        {"title": "Agentic Systems for End-to-End Surgical Workflows [S81941]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81941/", "time": "Tues. Mar. 17 | 4:00 a.m. PDT", "type": "Talk", "format": "Virtual", "speakers": ["Pieter De Backer", "Benedict Kistner"]},
-                        {"title": "Customer-Centric Innovation in Automotive [S82116]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82116/", "time": "Tues. Mar. 17 | 4:00 a.m. PDT", "type": "Talk", "format": "Virtual", "speakers": ["Benedict Kistner"]}
-                    ]
-                },
-                "5:00 am PDT": {
-                    "sessions": [
-                        {"title": "From Vision to Reality: Building AI Factories [S81987]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81987/", "time": "Tues. Mar. 17 | 5:00 a.m. PDT", "type": "Panel", "format": "Virtual", "speakers": ["Raquel Hernansanz", "Andres Benitez Pozo", "Colin Payne"]},
-                        {"title": "Supercharging Responsible AI Innovation [S82044]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82044/", "time": "Tues. Mar. 17 | 5:00 a.m. PDT", "type": "Talk", "format": "Virtual", "speakers": ["Colin Payne", "Savannah Price"]},
-                        {"title": "Medical Speech and Transcription Frontiers [S81464]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81464/", "time": "Tues. Mar. 17 | 5:00 a.m. PDT", "type": "Panel", "format": "Virtual", "speakers": ["Cedric Steenbeke", "Alessandro De Sario"]}
-                    ]
-                },
-                "6:00 am PDT": {
-                    "sessions": [
-                        {"title": "Beyond the Black Box: Interpretability of LLMs in Finance [S82175]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82175/", "time": "Tues. Mar. 17 | 6:00 a.m. PDT", "type": "Talk", "format": "Virtual", "speakers": ["Hariom Tatsat", "ARIYE SHATER"]}
-                    ]
-                },
-                "7:00 am PDT": {
-                    "sessions": [
-                        {"title": "Venture Capitalist Reverse Pitch: EMEA [S81991]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81991/", "time": "Tues. Mar. 17 | 7:00 a.m. PDT", "type": "Panel", "format": "Virtual", "speakers": ["Troy Estes", "Rebecka Löthman Rydå"]}
-                    ]
-                },
-                "8:00 am PDT": {
-                    "sessions": [
-                        {"title": "Build Agentic Workflows for Financial Applications [DLIT81814]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-dlit81814/", "time": "Tues. Mar. 17 | 8:00 a.m. PDT", "type": "Training Lab", "format": "In-Person", "speakers": ["Benjamin Wu", "David Williams"]},
-                        {"title": "Build Robot-Ready Assets for Physically Accurate Simulations With Lightwheel [DLIT81816]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-dlit81816/", "time": "Tues. Mar. 17 | 8:00 a.m. PDT", "type": "Training Lab", "format": "In-Person", "speakers": ["Frank Chen", "Siyi Lin"]},
-                        {"title": "Compress, Cut, and Distill: The Latest Gen AI Model Compression Techniques in Practice [DLIT81861]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-dlit81861/", "time": "Tues. Mar. 17 | 8:00 a.m. PDT", "type": "Training Lab", "format": "In-Person", "speakers": ["Harshita Seth", "Lavinia Ghita"]},
-                        {"title": "How to Provision and Install NVIDIA Run:ai [DLIT82184]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-dlit82184/", "time": "Tues. Mar. 17 | 8:00 a.m. PDT", "type": "Training Lab", "format": "In-Person", "speakers": ["David Whitehouse"]},
-                        {"title": "NVIDIA Certification Overview: What You Need to Know [C82414]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-c82414/", "time": "Tues. Mar. 17 | 8:00 a.m. PDT", "type": "Certification", "format": "In-Person", "speakers": ["Aeshah Hadges", "Gary Fluitt"]}
-                    ]
-                },
-                "9:00 am PDT": {
-                    "sessions": [
-                        {"title": "Achieve Truly Serverless GPUs With libfuse, CRIU, and CUDA-Checkpoint [S81424]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81424/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Talk", "format": "In-Person", "speakers": ["Charles Frye"]},
-                        {"title": "Autonomous AI Factories: A Technical Preview of Agent-Native Production [S81584]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81584/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Talk", "format": "In-Person, Live Stream", "speakers": ["JP Vasseur", "César Martinez Spessot"]},
-                        {"title": "Beyond the Basics: OpenUSD for Advanced Physical AI Simulation [S81630]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81630/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Talk", "format": "In-Person", "speakers": ["Aaron Luk"]},
-                        {"title": "Build Gigascale AI Factories With Next-Generation Rack-Scale Systems [S81793]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81793/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Talk", "format": "In-Person, Live Stream", "speakers": ["Charlie Boyle", "Brian Knapp"]},
-                        {"title": "Build High-Performance Financial AI [S81623]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81623/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Talk", "format": "In-Person, Live Stream", "speakers": ["Martin Marciniszyn Mehringer", "Nikolai Markovskii"]},
-                        {"title": "Building the Intelligent Control Plane for Medical Imaging [S81677]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81677/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Talk", "format": "In-Person, Live Stream", "speakers": ["Taha Kass-Hout", "Roland Rott"]},
-                        {"title": "Disney's Robotic Characters: From the Screen to Reality via Physical AI [S81492]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81492/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Talk", "format": "In-Person", "speakers": ["Moritz Baecher"]},
-                        {"title": "From Idle to Optimized: Managing GPUs, Kubernetes (Presented by HPE) [S82139]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82139/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Talk", "format": "In-Person", "speakers": ["Abhishek Agarwal"]},
-                        {"title": "Future of Enterprise AI: Infrastructure to Intelligence (Presented by Tata) [S82423]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82423/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Talk", "format": "In-Person", "speakers": ["Sujatha Gopal", "Amit Kapur"]},
-                        {"title": "Immersive Robotics Teleop 101 [S81999]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81999/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Talk", "format": "In-Person", "speakers": ["Tiffany Chen", "Ke Jing"]},
-                        {"title": "Learn how New AI Coding Agents and Tools Unlock GPU Performance [S81590]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81590/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Talk", "format": "In-Person", "speakers": ["Jackson Marusarz"]},
-                        {"title": "Nemotron Unpacked: Build, Fine-Tune, and Deploy NVIDIA's Open Models [S81719]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81719/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Talk", "format": "In-Person, Live Stream", "speakers": ["Bryan Catanzaro"]},
-                        {"title": "Optimize Performance of Vision AI Models on the Edge [S81833]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81833/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Talk", "format": "In-Person", "speakers": ["Louise Huang"]},
-                        {"title": "Security for the AI-First Enterprise [S81491]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81491/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Talk", "format": "In-Person, Live Stream", "speakers": ["David Reber"]},
-                        {"title": "Take AV2.0 to the Next Level With End-to-End Embodied AI [S82149]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82149/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Talk", "format": "In-Person, Live Stream", "speakers": ["Alex Kendall"]},
-                        {"title": "The State of the Art of Quantum Chemistry on GPUs [S81503]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81503/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Talk", "format": "In-Person", "speakers": ["Giuseppe M. J. Barca"]},
-                        {"title": "Transform Content Delivery With Generative AI at the Edge [S81690]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81690/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Talk", "format": "In-Person, Live Stream", "speakers": ["Kevin Deierling"]},
-                        {"title": "Unlocking Data at Scale for AI Factories (Presented by DDN) [S82241]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82241/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Talk", "format": "In-Person", "speakers": ["Jacob Liberman", "James Coomer"]},
-                        {"title": "Accelerating Scientific Discovery Through Global Innovation [S82438]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82438/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Fireside Chat", "format": "In-Person, Live Stream", "speakers": ["Dario Gil", "Ian Buck"]},
-                        {"title": "Game Agent Models - Picking & perfecting the right AI models [S81737]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81737/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Tutorial", "format": "In-Person", "speakers": ["Vinay Raman", "Ameya Sunil Mahabaleshwarkar"]},
-                        {"title": "AI For Science: Driving Innovation in Research Labs [CWES81649]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-cwes81649/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Connect With the Experts", "format": "In-Person", "speakers": ["Daniel Burkhardt", "Justin Smith"]},
-                        {"title": "The Agentic Revolution for Specialty Care [S81610]", "url": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81610/", "time": "Tues. Mar. 17 | 9:00 a.m. PDT", "type": "Lightning Talk", "format": "In-Person", "speakers": ["Brad Genereaux", "Ricardo Rei"]}
-                    ]
-                },
-                "10:00 am PDT": {"sessions": []},
-                "11:00 am PDT": {"sessions": []},
-                "1:00 pm PDT": {"sessions": []},
-                "2:00 pm PDT": {"sessions": []},
-                "3:00 pm PDT": {"sessions": []},
-                "4:00 pm PDT": {"sessions": []},
-                "10:30 pm PDT": {"sessions": []},
-                "11:00 pm PDT": {"sessions": []},
-                "11:30 pm PDT": {"sessions": []}
-            }
-        };
-
-        // Render time slots
-        function renderTimeSlots() {
-            const container = document.getElementById('timeSlotsContainer');
-            const timeSlots = sessionData.time_slots;
-            
-            Object.keys(timeSlots).forEach((timeSlot, index) => {
-                const slot = timeSlots[timeSlot];
-                const sessionCount = slot.sessions.length;
-                
-                const timeSlotDiv = document.createElement('div');
-                timeSlotDiv.className = 'time-slot';
-                
-                const header = document.createElement('div');
-                header.className = 'time-slot-header';
-                header.innerHTML = `
-                    <h3>${timeSlot}</h3>
-                    <span class="session-count">${sessionCount} sessions</span>
-                    <span class="toggle-icon">▼</span>
-                `;
-                
-                const sessionsDiv = document.createElement('div');
-                sessionsDiv.className = 'sessions';
-                sessionsDiv.id = `sessions-${index}`;
-                
-                if (sessionCount === 0) {
-                    sessionsDiv.innerHTML = '<div class="no-sessions">No sessions scheduled for this time slot</div>';
-                } else {
-                    slot.sessions.forEach(session => {
-                        const sessionDiv = document.createElement('div');
-                        sessionDiv.className = 'session';
-                        sessionDiv.innerHTML = `
-                            <div class="session-title">
-                                <a href="${session.url}" target="_blank">${session.title}</a>
-                            </div>
-                            <div class="session-meta">
-                                <span class="session-type">${session.type}</span>
-                                <span class="session-format">${session.format}</span>
-                                <span class="session-speakers">👤 ${session.speakers.join(', ')}</span>
-                            </div>
-                        `;
-                        sessionsDiv.appendChild(sessionDiv);
-                    });
-                }
-                
-                header.addEventListener('click', () => {
-                    sessionsDiv.classList.toggle('active');
-                    header.querySelector('.toggle-icon').classList.toggle('active');
-                });
-                
-                timeSlotDiv.appendChild(header);
-                timeSlotDiv.appendChild(sessionsDiv);
-                container.appendChild(timeSlotDiv);
-            });
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', renderTimeSlots);
-    </script>
+<script>
+const data = {
+"12:00 am PDT": [{"t": "从物理近似到物理真实：基于真实物理参数的 Physical AI 合成数据基础设施 [S82188]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82188/", "ty": "Talk", "f": "Virtual", "s": ["Jianwei Zhang"]}, {"t": "基于多模态端到端世界模型的智驾体验 [S82109]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82109/", "ty": "Talk", "f": "Virtual", "s": ["晓智 陈"]}, {"t": "SeamlessFlow：NVIDIA GPU 集群上基于 Megatron-Core 的 Trainer-Agent 隔离与标签调度无空泡强化学习框架 [S82321]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82321/", "ty": "Talk", "f": "Virtual", "s": ["Yinghan Cui"]}],
+"1:00 am PDT": [{"t": "规模化架构：大语言模型持续学习的探索与实践 [S82322]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82322/", "ty": "Panel", "f": "Virtual", "s": ["xue chao", "通易 曹", "晓辉 张"]}, {"t": "用基座模型重塑智能边界 [S81995]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81995/", "ty": "Talk", "f": "Virtual", "s": ["通易 曹"]}, {"t": "AI 与工业的融合：探索工业具身智能新路径 [S81944]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81944/", "ty": "Talk", "f": "Virtual", "s": ["晓辉 张", "Xianglin Mao"]}, {"t": "Build a GPU-Accelerated Database Engine With CUDA [S82203]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82203/", "ty": "Talk", "f": "Virtual", "s": ["Jalakandeshwaran A", "Harishankar G"]}, {"t": "AI Factories in Europe [S81899]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81899/", "ty": "Panel", "f": "Virtual", "s": ["Carlo Ruiz", "Julia Koch"]}, {"t": "Powering Research: Real Academic Use Cases [S81942]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81942/", "ty": "Panel", "f": "Virtual", "s": ["Tomasz Bednarz", "Mirco Musolesi"]}],
+"2:00 am PDT": [{"t": "Revolutionize Automated Parcel Handling With Humanoid Robots [S81982]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81982/", "ty": "Panel", "f": "Virtual", "s": ["António Conde", "Miguel Martinez", "Meriem Bendris"]}, {"t": "Teach AI to Code in Every Language With NVIDIA NeMo [S82306]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82306/", "ty": "Talk", "f": "Virtual", "s": ["Miguel Martinez", "Meriem Bendris"]}, {"t": "AI in the Age of Regulation [S81627]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81627/", "ty": "Panel", "f": "Virtual", "s": ["William Dunning", "Barnaby Simkin"]}],
+"3:00 am PDT": [{"t": "UK AI Minister: AI Growth Zones [S82400]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82400/", "ty": "Panel", "f": "Virtual", "s": ["Bea Longworth", "Kanishka Narayan", "Sandra Skaff"]}, {"t": "Build Physical Intelligence [S81509]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81509/", "ty": "Panel", "f": "Virtual", "s": ["Sandra Skaff", "Steven Palma"]}],
+"4:00 am PDT": [{"t": "Agentic Systems for End-to-End Surgical Workflows [S81941]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81941/", "ty": "Talk", "f": "Virtual", "s": ["Pieter De Backer", "Benedict Kistner"]}, {"t": "Customer-Centric Innovation in Automotive [S82116]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82116/", "ty": "Talk", "f": "Virtual", "s": ["Benedict Kistner"]}],
+"5:00 am PDT": [{"t": "From Vision to Reality: Building AI Factories [S81987]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81987/", "ty": "Panel", "f": "Virtual", "s": ["Raquel Hernansanz", "Andres Benitez Pozo", "Colin Payne"]}, {"t": "Supercharging Responsible AI Innovation [S82044]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82044/", "ty": "Talk", "f": "Virtual", "s": ["Colin Payne", "Savannah Price"]}, {"t": "Medical Speech and Transcription Frontiers [S81464]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81464/", "ty": "Panel", "f": "Virtual", "s": ["Cedric Steenbeke", "Alessandro De Sario"]}],
+"6:00 am PDT": [{"t": "Beyond the Black Box: Interpretability of LLMs in Finance [S82175]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82175/", "ty": "Talk", "f": "Virtual", "s": ["Hariom Tatsat", "ARIYE SHATER"]}],
+"7:00 am PDT": [{"t": "Venture Capitalist Reverse Pitch: EMEA [S81991]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81991/", "ty": "Panel", "f": "Virtual", "s": ["Troy Estes", "Rebecka Löthman Rydå"]}],
+"8:00 am PDT": [{"t": "Build Agentic Workflows for Financial Applications [DLIT81814]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-dlit81814/", "ty": "Training Lab", "f": "In-Person", "s": ["Benjamin Wu", "David Williams"]}, {"t": "Build Robot-Ready Assets for Physically Accurate Simulations With Lightwheel [DLIT81816]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-dlit81816/", "ty": "Training Lab", "f": "In-Person", "s": ["Frank Chen", "Siyi Lin"]}, {"t": "Compress, Cut, and Distill: The Latest Gen AI Model Compression Techniques in Practice [DLIT81861]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-dlit81861/", "ty": "Training Lab", "f": "In-Person", "s": ["Harshita Seth", "Lavinia Ghita"]}, {"t": "How to Provision and Install NVIDIA Run:ai [DLIT82184]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-dlit82184/", "ty": "Training Lab", "f": "In-Person", "s": ["David Whitehouse"]}, {"t": "NVIDIA Certification Overview: What You Need to Know [C82414]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-c82414/", "ty": "Certification", "f": "In-Person", "s": ["Aeshah Hadges", "Gary Fluitt"]}],
+"9:00 am PDT": [{"t": "Achieve Truly Serverless GPUs With libfuse, CRIU, and CUDA-Checkpoint [S81424]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81424/", "ty": "Talk", "f": "In-Person", "s": ["Charles Frye"]}, {"t": "Autonomous AI Factories: A Technical Preview of Agent-Native Production [S81584]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81584/", "ty": "Talk", "f": "In-Person, Live Stream", "s": ["JP Vasseur", "César Martinez Spessot"]}, {"t": "Beyond the Basics: OpenUSD for Advanced Physical AI Simulation [S81630]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81630/", "ty": "Talk", "f": "In-Person", "s": ["Aaron Luk"]}, {"t": "Build Gigascale AI Factories With Next-Generation Rack-Scale Systems [S81793]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81793/", "ty": "Talk", "f": "In-Person, Live Stream", "s": ["Charlie Boyle", "Brian Knapp"]}, {"t": "Build High-Performance Financial AI [S81623]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81623/", "ty": "Talk", "f": "In-Person, Live Stream", "s": ["Martin Marciniszyn Mehringer", "Nikolai Markovskii"]}, {"t": "Building the Intelligent Control Plane for Medical Imaging [S81677]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81677/", "ty": "Talk", "f": "In-Person, Live Stream", "s": ["Taha Kass-Hout", "Roland Rott"]}, {"t": "Disney's Robotic Characters: From the Screen to Reality via Physical AI [S81492]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81492/", "ty": "Talk", "f": "In-Person", "s": ["Moritz Baecher"]}, {"t": "From Idle to Optimized: Managing GPUs, Kubernetes (Presented by HPE) [S82139]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82139/", "ty": "Talk", "f": "In-Person", "s": ["Abhishek Agarwal"]}, {"t": "Future of Enterprise AI: Infrastructure to Intelligence (Presented by Tata) [S82423]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82423/", "ty": "Talk", "f": "In-Person", "s": ["Sujatha Gopal", "Amit Kapur"]}, {"t": "Immersive Robotics Teleop 101 [S81999]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81999/", "ty": "Talk", "f": "In-Person", "s": ["Tiffany Chen", "Ke Jing"]}, {"t": "Learn how New AI Coding Agents and Tools Unlock GPU Performance [S81590]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81590/", "ty": "Talk", "f": "In-Person", "s": ["Jackson Marusarz"]}, {"t": "Nemotron Unpacked: Build, Fine-Tune, and Deploy NVIDIA's Open Models [S81719]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81719/", "ty": "Talk", "f": "In-Person, Live Stream", "s": ["Bryan Catanzaro"]}, {"t": "Optimize Performance of Vision AI Models on the Edge [S81833]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81833/", "ty": "Talk", "f": "In-Person", "s": ["Louise Huang"]}, {"t": "Security for the AI-First Enterprise [S81491]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81491/", "ty": "Talk", "f": "In-Person, Live Stream", "s": ["David Reber"]}, {"t": "Take AV2.0 to the Next Level With End-to-End Embodied AI [S82149]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82149/", "ty": "Talk", "f": "In-Person, Live Stream", "s": ["Alex Kendall"]}, {"t": "The State of the Art of Quantum Chemistry on GPUs [S81503]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81503/", "ty": "Talk", "f": "In-Person", "s": ["Giuseppe M. J. Barca"]}, {"t": "Transform Content Delivery With Generative AI at the Edge [S81690]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81690/", "ty": "Talk", "f": "In-Person, Live Stream", "s": ["Kevin Deierling"]}, {"t": "Unlocking Data at Scale for AI Factories (Presented by DDN) [S82241]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82241/", "ty": "Talk", "f": "In-Person", "s": ["Jacob Liberman", "James Coomer"]}, {"t": "Accelerating Scientific Discovery Through Global Innovation [S82438]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82438/", "ty": "Fireside Chat", "f": "In-Person, Live Stream", "s": ["Dario Gil", "Ian Buck"]}, {"t": "Game Agent Models - Picking & perfecting the right AI models [S81737]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81737/", "ty": "Tutorial", "f": "In-Person", "s": ["Vinay Raman", "Ameya Sunil Mahabaleshwarkar"]}, {"t": "AI For Science: Driving Innovation in Research Labs [CWES81649]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-cwes81649/", "ty": "Connect With the Experts", "f": "In-Person", "s": ["Daniel Burkhardt", "Justin Smith"]}, {"t": "The Agentic Revolution for Specialty Care [S81610]", "u": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81610/", "ty": "Lightning Talk", "f": "In-Person", "s": ["Brad Genereaux", "Ricardo Rei"]}]
+};
+const slots = Object.keys(data).sort();
+const container = document.getElementById('container');
+slots.forEach((slot, i) => {
+    const sessions = data[slot];
+    const count = sessions.length;
+    const div = document.createElement('div');
+    div.className = 'time-slot';
+    div.innerHTML = '<div class="time-slot-header" onclick="toggle('+i+')">' +
+        '<h3>'+slot+'</h3>' +
+        '<span class="session-count '+(count===0?'zero':'')+'">'+count+' sessions</span>' +
+        '</div>' +
+        '<div class="sessions" id="s'+i+'">' +
+        (count===0?'<p style="color:#999;padding:20px;text-align:center">No sessions</p>':sessions.map(s => 
+            '<div class="session">' +
+            '<div class="session-title"><a href="'+s.u+'" target="_blank">'+s.t+'</a></div>' +
+            '<div class="session-meta">' +
+            '<span class="session-type">'+s.ty+'</span>' +
+            '<span class="session-format">'+s.f+'</span>' +
+            '<span>👤 '+s.s.join(', ')+'</span>' +
+            '</div></div>'
+        ).join('')) +
+        '</div>';
+    container.appendChild(div);
+});
+function toggle(i) { document.getElementById('s'+i).classList.toggle('active'); }
+</script>
 </body>
 </html>
