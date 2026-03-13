@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTC 2026 Session Catalog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+        }
+        .logo {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #76b900 0%, #a4d65e 50%, #76b900 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            letter-spacing: -2px;
+        }
+        .subtitle { font-size: 1.2rem; color: #888; margin-bottom: 8px; }
+        .date { font-size: 1rem; color: #76b900; font-weight: 500; }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 2.5rem; font-weight: 700; color: #76b900; }
+        .stat-label { font-size: 0.9rem; color: #888; margin-top: 5px; }
+        .time-section { margin-bottom: 50px; }
+        .time-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding: 0 10px;
+        }
+        .time-badge {
+            background: linear-gradient(135deg, #76b900 0%, #5a8f00 100%);
+            color: #000;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+        .time-line {
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, #76b900 0%, transparent 100%);
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 20px;
+        }
+        .session-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .session-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #76b900 0%, #a4d65e 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .session-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(118, 185, 0, 0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(118, 185, 0, 0.1);
+        }
+        .session-card:hover::before { opacity: 1; }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+        .session-code {
+            background: rgba(118, 185, 0, 0.15);
+            color: #76b900;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: 'SF Mono', monospace;
+            letter-spacing: 0.5px;
+        }
+        .session-type {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        .type-badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+        .type-workshop { background: rgba(255, 107, 107, 0.2); color: #ff6b6b; }
+        .type-session { background: rgba(78, 205, 196, 0.2); color: #4ecdc4; }
+        .type-inperson { background: rgba(255, 193, 7, 0.2); color: #ffc107; }
+        .session-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+        .session-desc {
+            font-size: 0.9rem;
+            color: #aaa;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .tech-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .tech-tag {
+            background: rgba(255,255,255,0.05);
+            color: #888;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+        }
+        .session-link {
+            color: #76b900;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s ease;
+        }
+        .session-link:hover { gap: 10px; }
+        .session-link::after { content: '→'; }
+        .language-zh { background: rgba(220, 38, 38, 0.2); color: #ff6b6b; }
+        .language-en { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+        @media (max-width: 768px) {
+            .logo { font-size: 2rem; }
+            .cards-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="logo">GTC 2026</h1>
+            <p class="subtitle">Session Catalog</p>
+            <p class="date">March 15-19, 2026 | San Jose, CA</p>
+        </header>
+
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">20</div>
+                <div class="stat-label">Sessions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">9</div>
+                <div class="stat-label">Workshops</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Time Slots</div>
+            </div>
+        </div>
+
+        <!-- 8:30 AM Workshops -->
+        <div class="time-section" data-time="0830">
+            <div class="time-header">
+                <span class="time-badge">Sunday, March 15 | 8:30 AM - 5:00 PM PDT</span>
+                <div class="time-line"></div>
+            </div>
+            <div class="cards-grid">
+                <div class="session-card" data-type="workshop" data-lang="english">
+                    <div class="card-header">
+                        <span class="session-code">DLIW82209</span>
+                        <div class="session-type">
+                            <span class="type-badge type-workshop">Workshop</span>
+                            <span class="type-badge type-inperson">In-Person</span>
+                            <span class="type-badge language-en">EN</span>
+                        </div>
+                    </div>
+                    <h3 class="session-title">Accelerated Networking for AI Infrastructure</h3>
+                    <p class="session-desc">Gain a holistic understanding of AI factory networking, exploring how key communication methods between GPUs, racks, and storage shape overall AI performance and scalability.</p>
+                    <div class="card-footer">
+                        <div class="tech-tags">
+                            <span class="tech-tag">InfiniBand</span>
+                            <span class="tech-tag">NVLink</span>
+                            <span class="tech-tag">Spectrum-X</span>
+                        </div>
+                        <a href="https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-dliw82209/" class="session-link" target="_blank">Details</a>
+                    </div>
+                </div>
+
+                <div class="session-card" data-type="workshop" data-lang="english">
+                    <div class="card-header">
+                        <span class="session-code">DLIW82267</span>
+                        <div class="session-type">
+                            <span class="type-badge type-workshop">Workshop</span>
+                            <span class="type-badge type-inperson">In-Person</span>
+                            <span class="type-badge language-en">EN</span>
+                        </div>
+                    </div>
+                    <h3 class="session-title">Adding New Knowledge to LLMs</h3>
+                    <p class="session-desc">Learn techniques for updating and extending large language models with new knowledge, including fine-tuning approaches and knowledge injection methods.</p>
+                    <div class="card-footer">
+                        <div class="tech-tags">
+                            <span class="tech-tag">LLM</span>
+                            <span class="tech-tag">Fine-tuning</span>
+                            <span class="tech-tag">RAG</span>
+                        </div>
+                        <a href="https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-dliw82267/" class="session-link" target="_blank">Details</a>
+                    </div>
+                </div>
+
+                <div class="session-card" data-type="workshop" data-lang="english">
+                    <div class="card-header">
+                        <span class="session-code">DLIW82269</span>
+                        <div class="session-type">
+                            <span class="type-badge type-workshop">Workshop</span>
+                            <span class="type-badge type-inperson">In-Person</span>
+                            <span class="type-badge language-en">EN</span>
+                        </div>
+                    </div>
+                    <h3 class="session-title">Building AI Agents with Multimodal Models</h3>
+                    <p class="session-desc">Explore how to build sophisticated AI agents that can process and reason across multiple modalities including text, images, and audio.</p>
+                    <div class="card-footer">
+                        <div class="tech-tags">
+                            <span class="tech-tag">AI Agents</span>
+                            <span class="tech-tag">Multimodal</span>
+                            <span class="tech-tag">Vision</span>
+                        </div>
+                        <a href="https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-dliw82269/" class="session-link" target="_blank">Details</a>
+                    </div>
+                </div>
+
+                <div class="session-card" data-type="workshop" data-lang="english">
+                    <div class="card-header">
+                        <span class="session-code">DLIW82270</span>
+                        <div class="session-type">
+                            <span class="type-badge type-workshop">Workshop</span>
+                            <span class="type-badge type-inperson">In-Person</span>
+                            <span class="type-badge language-en">EN</span>
+                        </div>
+                    </div>
+                    <h3 class="session-title">Building LLM Applications with Prompt Engineering</h3>
+                    <p class="session-desc">Master prompt engineering techniques to build effective LLM applications, including chain-of-thought, few-shot learning, and structured prompting.</p>
+                    <div class="card-footer">
+                        <div class="tech-tags">
+                            <span class="tech-tag">Prompt Engineering</span>
+                            <span class="tech-tag">LLM Apps</span>
+                            <span class="tech-tag">GenAI</span>
+                        </div>
+                        <a href="https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-dliw82270/" class="session-link" target="_blank">Details</a>
+                    </div>
+                </div>
+
+                <div class="session-card" data-type="workshop" data-lang="english">
+                    <div class="card-header">
+                        <span class="session-code">DLIW82268</span>
+                        <div class="session-type">
+                            <span class="type-badge type-workshop">Workshop</span>
+                            <span class="type-badge type-inperson">In-Person</span>
+                            <span class="type-badge language-en">EN</span>
+                        </div>
+                    </div>
+                    <h3 class="session-title">Building Observable and Scalable Multi-Agent Workflows</h3>
+                    <p class="session-desc">Learn to build multi-agent systems for asset lifecycle management with observability and scalability in mind.</p>
+                    <div class="card-footer">
+                        <div class="tech-tags">
+                            <span class="tech-tag">Multi-Agent</span>
+                            <span class="tech-tag">Observability</span>
+                            <span class="tech-tag">Workflows</span>
+                        </div>
+                        <a href="https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-dliw82268/" class="session-link" target="_blank">Details</a>
+                    </div>
+                </div>
+
+                <div class="session-card" data-type="workshop" data-lang="english">
+                    <div class="card-header">
+                        <span class="session-code">DLIW82274</span>
+                        <div class="session-type">
+                            <span class="type-badge type-workshop">Workshop</span>
+                            <span class="type-badge type-inperson">In-Person</span>
+                            <span class="type-badge language-en">EN</span>
+                        </div>
+                    </div>
+                    <h3 class="session-title">Deploying and Optimizing AI Inference at Scale</h3>
+                    <p class="session-desc">Learn best practices for deploying and optimizing AI inference workloads at scale using NVIDIA inference platforms.</p>
+                    <div class="card-footer">
+                        <div class="tech-tags">
+                            <span class="tech-tag">Inference</span>
+                            <span class="tech-tag">Triton</span>
+                            <span class="tech-tag">TensorRT</span>
+                        </div>
+                        <a href="https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-dliw82274/" class="session-link" target="_blank">Details</a>
+                    </div>
+                </div>
+
+                <div class="session-card" data-type="workshop" data-lang="english">
+                    <div class="card-header">
+                        <span class="session-code">DLIW82265</span>
+                        <div class="session-type">
+                            <span class="type-badge type-workshop">Workshop</span>
+                            <span class="type-badge type-inperson">In-Person</span>
+                            <span class="type-badge language-en">EN</span>
+                        </div>
+                    </div>
+                    <h3 class="session-title">Fundamentals of GPU-Accelerated Workflows with CUDA Python</h3>
+                    <p class="session-desc">Get started with GPU acceleration using CUDA Python to speed up your computational workflows.</p>
+                    <div class="card-footer">
+                        <div class="tech-tags">
+                            <span class="tech-tag">CUDA</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">GPU</span>
+                        </div>
+                        <a href="https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-dliw82265/" class="session-link" target="_blank">Details</a>
+                    </div>
+                </div>
+
+                <div class="session-card" data-type="workshop" data-lang="english">
+                    <div class="card-header">
+                        <span class="session-code">DLIW82273</span>
+                        <div class="session-type">
+                            <span class="type-badge type-workshop">Workshop</span>
+                            <span class="type-badge type-inperson">In-Person</span>
+                            <span class="type-badge language-en">EN</span>
+                        </div>
+                    </div>
+                    <h3 class="session-title">End-to-End Robotics Workflow with NVIDIA Isaac</h3>
+                    <p class="session-desc">Simulate, train, validate, and deploy robotics workflows using the comprehensive NVIDIA Isaac platform.</p>
+                    <div class="card-footer">
+                        <div class="tech-tags">
+                            <span class="tech-tag">Isaac</span>
+                            <span class="tech-tag">Robotics</span>
+                            <span class="tech-tag">Simulation</span>
+                        </div>
+                        <a href="https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-dliw82273/" class="session-link" target="_blank">Details</a>
+                    </div>
+                </div>
+
+                <div class="session-card" data-type="workshop" data-lang="english">
+                    <div class="card-header">
+                        <span class="session-code">DLIW82272</span>
+                        <div class="session-type">
+                            <span class="type-badge type-workshop">Workshop</span>
+                            <span class="type-badge type-inperson">In-Person</span>
+                            <span class="type-badge language-en">EN</span>
+                        </div>
+                    </div>
+                    <h3 class="session-title">Build 3D Data Pipelines for Physical AI</h3>
+                    <p class="session-desc">Learn to construct 3D data pipelines essential for training and deploying physical AI systems.</p>
+                    <div class="card-footer">
+                        <div class="tech-tags">
+                            <span class="tech-tag">3D Data</span>
+                            <span class="tech-tag">Physical AI</span>
+                            <span class="tech-tag">Omniverse</span>
+                        </div>
+                        <a href="https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-dliw82272/" class="session-link" target="_blank">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7:00 PM Sessions -->
+        <div class="time-section" data-time="1900">
+            <div class="time-header">
+                <span class="time-badge">Sunday, March 15 | 7:00 PM PDT</span>
+                <div class="time-line"></div>
+            </div>
+            <div class="cards-grid">
+                <div class="session-card" data-type="session" data-lang="chinese">
+                    <div class="card-header">
+                        <span class="session-code">S81823</span>
+                        <div class="session-type">
+                            <span class="type-badge type-session">Session</span>
+                            <span class="type-badge language-zh">中文</span>
+                        </div>
+                    </div>
+                    <h3 class="session-title">利用 NVIDIA Cosmos VSS 构建智慧交通（ITS）违章检测系统</h3>
+                    <p class="session-desc">学习如何使用 NVIDIA Cosmos VSS 平台构建智能交通系统违章检测解决方案。</p>
+                    <div class="card-footer">
+                        <div class="tech-tags">
+                            <span class="tech-tag">Cosmos VSS</span>
+                            <span class="tech-tag">ITS</span>
+                            <span class="tech-tag">Computer Vision</span>
+                        </div>
+                        <a href="https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81823/" class="session-link" target="_blank">Details</a>
+                    </div>
+                </div>
+
+                <div class="session-card" data-type="session" data-lang="chinese">
+                    <div class="card-header">
+                        <span class="session-code">S81829</span>
+                        <div class="session-type">
+                            <span class="type-badge type-session">Session</span>
+                            <span class="type-badge language-zh">中文</span>
+                        </div>
+                    </div>
+                    <h3 class="session-title">基于 verl 进行大模型强化学习的最佳实践</h3>
+                    <p class="session-desc">探索使用 verl 框架进行大规模语言模型强化学习的最佳实践和方法。</p>
+                    <div class="card-footer">
+                        <div class="tech-tags">
+                            <span class="tech-tag">verl</span>
+                            <span class="tech-tag">RL</span>
+                            <span class="tech-tag">LLM Training</span>
+                        </div>
+                        <a href="https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81829/" class="session-link" target="_blank">Details</a>
+                    </div>
+                </div>
+
+                <div class="session-card" data-type="session" data-lang="chinese">
+                    <div class="card-header">
+                        <span class="session-code">S81969</span>
+                        <div class="session-type">
+                            <span class="type-badge type-session">Session</span>
+                            <span class="type-badge language-zh">中文</span>
+                        </div>
+                    </div>
+                    <h3 class="session-title">利用 PhysicsNeMo 加速机器人中的柔性触觉传感器仿真</h3>
+                    <p class="session-desc">了解如何使用 PhysicsNeMo 加速机器人柔性触觉传感器的仿真和开发。</p>
+                    <div class="card-footer">
+                        <div class="tech-tags">
+                            <span class="tech-tag">PhysicsNeMo</span>
+                            <span class="tech-tag">Robotics</span>
+                            <span class="tech-tag">Simulation</span>
+                        </div>
+                        <a href="https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81969/" class="session-link" target="_blank">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8:00 PM Sessions -->
+        <div class="time-section" data-time="2000">
+            <div class="time-header">
+                <span class="time-badge">Sunday, March 15 | 8:00 PM PDT</span>
+                <div class="time-line"></div>
+            </div>
+            <div class="cards-grid">
+                <div class="session-card" data-type="session" data-lang="chinese">
+                    <div class="card-header">
+                        <span class="session-code">S82354</span>
+                        <div class="session-type">
+                            <span class="type-badge type-session">Session</span>
+                            <span class="type-badge language-zh">中文</span>
+                        </div>
+                    </div>
+                    <h3 class="session-title">基于 NVIDIA AI Enterprise 全栈赋能："AI Factory" 重塑智造新标杆</h3>
+                    <p class="session-desc">了解 NVIDIA AI Enterprise 全栈如何赋能企业构建 AI 工厂，重塑智能制造标准。</p>
+                    <div class="card-footer">
+                        <div class="tech-tags">
+                            <span class="tech-tag">AI Enterprise</span>
+                            <span class="tech-tag">AI Factory</span>
+                            <span class="tech-tag">Manufacturing</span>
+                        </div>
+                        <a href="https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82354/" class="session-link" target="_blank">Details</a>
+                    </div>
+                </div>
+
+                <div class="session-card" data-type="session" data-lang="chinese">
+                    <div class="card-header">
+                        <span class="session-code">S81939</span>
+                        <div class="session-type">
+                            <span class="type-badge type-session">Session</span>
+                            <span class="type-badge language-zh">中文</span>
+                        </div>
+                    </div>
+                    <h3 class="session-title">面向灵巧操作的高效强化学习框架</h3>
+                    <p class="session-desc">探索面向机器人灵巧操作任务的高效强化学习框架设计和实现。</p>
+                    <div class="card-footer">
+                        <div class="tech-tags">
+                            <span class="tech-tag">Dexterous Manipulation</span>
+                            <span class="tech-tag">RL</span>
+                            <span class="tech-tag">Robotics</span>
+                        </div>
+                        <a href="https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81939/" class="session-link" target="_blank">Details</a>
+                    </div>
+                </div>
+
+                <div class="session-card" data-type="session" data-lang="chinese">
+                    <div class="card-header">
+                        <span class="session-code">S82284</span>
+                        <div class="session-type">
+                            <span class="type-badge type-session">Session</span>
+                            <span class="type-badge language-zh">中文</span>
+                        </div>
+                    </div>
+                    <h3 class="session-title">ROLL：集成 NVIDIA Megatron 的大规模 LLM 强化学习框架</h3>
+                    <p class="session-desc">介绍 ROLL 框架：一个高效易用的大规模 LLM 强化学习框架，集成 NVIDIA Megatron。</p>
+                    <div class="card-footer">
+                        <div class="tech-tags">
+                            <span class="tech-tag">ROLL</span>
+                            <span class="tech-tag">Megatron</span>
+                            <span class="tech-tag">LLM RL</span>
+                        </div>
+                        <a href="https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82284/" class="session-link" target="_blank">Details</a>
+                    </div>
+                </div>
+
+                <div class="session-card" data-type="session" data-lang="chinese">
+                    <div class="card-header">
+                        <span class="session-code">S81981</span>
+                        <div class="session-type">
+                            <span class="type-badge type-session">Session</span>
+                            <span class="type-badge language-zh">中文</span>
+                        </div>
+                    </div>
+                    <h3 class="session-title">十载相伴，NVIDIA 赋能创业公司在 AI 时代加速前行</h3>
+                    <p class="session-desc">回顾 NVIDIA 十年来如何赋能创业公司在 AI 时代实现快速发展和创新。</p>
+                    <div class="card-footer">
+                        <div class="tech-tags">
+                            <span class="tech-tag">Startups</span>
+                            <span class="tech-tag">Inception</span>
+                            <span class="tech-tag">AI</span>
+                        </div>
+                        <a href="https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81981/" class="session-link" target="_blank">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 11:00 PM Sessions -->
+        <div class="time-section" data-time="2300">
+            <div class="time-header">
+                <span class="time-badge">Sunday, March 15 | 11:00 PM PDT</span>
+                <div class="time-line"></div>
+            </div>
+            <div class="cards-grid">
+                <div class="session-card" data-type="session" data-lang="chinese">
+                    <div class="card-header">
+                        <span class="session-code">S81961</span>
+                        <div class="session-type">
+                            <span class="type-badge type-session">Session</span>
+                            <span class="type-badge language-zh">中文</span>
+                        </div>
+                    </div>
+                    <h3 class="session-title">高速公路数字化转型——基于云边协同的 VLM 大模型行业长尾场景落地</h3>
+                    <p class="session-desc">探讨高速公路数字化转型中，如何利用云边协同和 VLM 大模型解决行业长尾场景问题。</p>
+                    <div class="card-footer">
+                        <div class="tech-tags">
+                            <span class="tech-tag">VLM</span>
+                            <span class="tech-tag">Edge Computing</span>
+                            <span class="tech-tag">Transportation</span>
+                        </div>
+                        <a href="https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81961/" class="session-link" target="_blank">Details</a>
+                    </div>
+                </div>
+
+                <div class="session-card" data-type="session" data-lang="chinese">
+                    <div class="card-header">
+                        <span class="session-code">S82127</span>
+                        <div class="session-type">
+                            <span class="type-badge type-session">Session</span>
+                            <span class="type-badge language-zh">中文</span>
+                        </div>
+                    </div>
+                    <h3 class="session-title">工业级具身智能，正在从概念走向现实</h3>
+                    <p class="session-desc">探讨工业级具身智能技术的最新进展，以及如何从概念阶段走向实际应用。</p>
+                    <div class="card-footer">
+                        <div class="tech-tags">
+                            <span class="tech-tag">Embodied AI</span>
+                            <span class="tech-tag">Industrial</span>
+                            <span class="tech-tag">Robotics</span>
+                        </div>
+                        <a href="https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82127/" class="session-link" target="_blank">Details</a>
+                    </div>
+                </div>
+
+                <div class="session-card" data-type="session" data-lang="chinese">
+                    <div class="card-header">
+                        <span class="session-code">S82283</span>
+                        <div class="session-type">
+                            <span class="type-badge type-session">Session</span>
+                            <span class="type-badge language-zh">中文</span>
+                        </div>
+                    </div>
+                    <h3 class="session-title">面向大规模 Agent RL 的高并发沙箱系统构建与实践</h3>
+                    <p class="session-desc">分享构建面向大规模 Agent 强化学习的高并发沙箱系统的实践经验和技术方案。</p>
+                    <div class="card-footer">
+                        <div class="tech-tags">
+                            <span class="tech-tag">Agent RL</span>
+                            <span class="tech-tag">Sandbox</span>
+                            <span class="tech-tag">Concurrency</span>
+                        </div>
+                        <a href="https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s82283/" class="session-link" target="_blank">Details</a>
+                    </div>
+                </div>
+
+                <div class="session-card" data-type="session" data-lang="chinese">
+                    <div class="card-header">
+                        <span class="session-code">S81974</span>
+                        <div class="session-type">
+                            <span class="type-badge type-session">Session</span>
+                            <span class="type-badge language-zh">中文</span>
+                        </div>
+                    </div>
+                    <h3 class="session-title">基于 NVIDIA 全栈技术打造代理式 AI 与物理 AI 的未来基石</h3>
+                    <p class="session-desc">介绍如何基于 NVIDIA 全栈技术构建代理式 AI 和物理 AI 的基础架构和解决方案。</p>
+                    <div class="card-footer">
+                        <div class="tech-tags">
+                            <span class="tech-tag">Agentic AI</span>
+                            <span class="tech-tag">Physical AI</span>
+                            <span class="tech-tag">Full Stack</span>
+                        </div>
+                        <a href="https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81974/" class="session-link" target="_blank">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
